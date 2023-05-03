@@ -1,101 +1,68 @@
 package com.ledger.info;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.invoke.LambdaMetafactory;
+import java.sql.SQLOutput;
 import java.util.Scanner;
-
 public class Main {
     static Scanner consoleInput = new Scanner(System.in);
-
     public static void main(String[] args) {
         homescreen();
     }
-
     public static void homescreen() {
-        System.out.println("Welcome to the Accounting Ledger ");
-        System.out.println("""
-                Choose an option from the main menu:\s
-                [D] - Add Deposit
-                [P] - Make Payment(Debit)
-                [L] - Ledger
-                [X] - Exit Application
-                                   """);
-        String input = consoleInput.nextLine();
-        switch (input.toUpperCase()) {
-            case "D":
-                addDeposit();
-                break;
-            case "P":
-                makePayment();
-                break;
-            case "L":
-                showLedger();
-                break;
-            case "X":
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Invalid entry... Try again ");
-                break;
+        boolean done = false;
+        while (!done) {
+            System.out.println("\n-------WELCOME TO THE ACCOUNTING LEDGER-------\n");
+            System.out.println("""
+                    CHOOSE AN OPTION:
+                    [D] - ADD DEPOSIT
+                    [P] - MAKE PAYMENT(DEBIT)
+                    [L] - LEDGER
+                    [X] - EXIT APPLICATION
+                                       """);
+            System.out.print("Your choice: ");
+            String input = consoleInput.nextLine();
+            switch (input.toUpperCase()) {
+                case "D" -> Ledger.addDeposit();
+                case "P" -> Ledger.makePayment();
+                case "L" -> showLedger();
+                case "X" -> {
+                    System.out.println("\nExiting Application...");
+                    System.exit(0);
+                    done = true;
+                }
+                default -> System.out.println("Invalid entry... Try again ");
+            }
         }
     }
-
-    public static void addDeposit() {
-        System.out.println("Enter Date: YYYY-MM-DD");
-        String date = consoleInput.nextLine();
-        System.out.println("Enter Time: HH-MM-ss ");
-        String time = consoleInput.nextLine();
-        System.out.println("Enter vendor: ");
-        String vendor = consoleInput.nextLine();
-        System.out.println("Enter brief description: ");
-        String description = consoleInput.nextLine();
-        System.out.println("Enter transaction amount: ");
-        double amount = consoleInput.nextDouble();
-
-        try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
-            fileWriter.write("\n" + date + "|" +
-                    time + "|" +
-                    description + "|" +
-                    vendor + "|" +
-                    amount);
-            fileWriter.close();
-            System.out.println("Deposit added ");
-        } catch (IOException e) {
-            System.out.println("Input not processed... Try again ");
-        }
-        homescreen();
-
-
-    }
-
-    public static void makePayment() {
-        System.out.println("Enter Date: YYYY-MM-DD");
-        String date = consoleInput.nextLine();
-        System.out.println("Enter Time: HH-MM-ss ");
-        String time = consoleInput.nextLine();
-        System.out.println("Enter vendor: ");
-        String vendor = consoleInput.nextLine();
-        System.out.println("Enter brief description: ");
-        String description = consoleInput.nextLine();
-        System.out.println("Enter transaction amount: ");
-        double amount = consoleInput.nextDouble();
-
-        try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
-            fileWriter.write("\n" + date + "|" +
-                    time + "|" +
-                    description + "|" +
-                    vendor + "|" + "-" +
-                    amount);
-            fileWriter.close();
-            System.out.println("Payment added ");
-        } catch (IOException e) {
-            System.out.println("Input not processed... Try again ");
-        }
-        homescreen();
-    }
-
     public static void showLedger() {
-      Ledger.showLedger();
+        boolean done = false;
+        while (!done) {
+            System.out.println("\n-------LEDGER MENU-------\n");
+            System.out.println("""
+                    CHOOSE AN OPTION:
+                    [A] - DISPLAY ENTRIES
+                    [D] - DISPLAY DEPOSITS
+                    [P] - DISPLAY PAYMENTS
+                    [R] - DISPLAY REPORTS
+                    [H] - RETURN TO HOME SCREEN
+                                       """);
+            System.out.print("YOUR CHOICE: ");
+            String input = consoleInput.nextLine();
+            switch (input.toUpperCase()) {
+                case "A" -> Ledger.showEntries();
+                case "D" -> Ledger.showDeposits();
+                case "P" -> Ledger.showPayments();
+                case "R" -> {
+                    Ledger.showReports();
+                    done =  true;
+                }
+                case "H" -> {
+                    System.out.println("Returning to home screen... \n");
+                    homescreen();
+                    done = true;
+                }
+                default -> System.out.println("Invalid entry... Try again ");
+            }
+        }
     }
 }
+
+
