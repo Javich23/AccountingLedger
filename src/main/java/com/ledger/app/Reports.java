@@ -84,7 +84,7 @@ public class Reports {
         printHeader();
         for (TransactionsInfo i : transactions) {
             LocalDate transactionDate = i.getDate();
-            if (transactionDate.getMonthValue() == previousMonth) {
+            if (transactionDate.getMonthValue() == previousMonth && transactionDate.getYear() == today.getYear()) {
                 System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         }

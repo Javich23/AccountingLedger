@@ -88,7 +88,7 @@ public class LedgerApp {
         } catch (IOException e) {
             System.out.println("\nINVALID INPUT");
         }
-        LedgerApp.homescreen();
+        return;
     }
     //method write input payment into transactions csv file
     public static void addPayment() {
@@ -100,13 +100,13 @@ public class LedgerApp {
         double amount = consoleInput.nextDouble();
 
         try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
-            fileWriter.write(String.format("\n%s|%s|%s|%s|-%.2f\n", LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), description, vendor, amount));
+            fileWriter.write(String.format("%s|%s|%s|%s|-%.2f\n", LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), description, vendor, amount));
             fileWriter.close();
             System.out.println("\nPAYMENT ADDED... ");
         } catch (IOException e) {
             System.out.println("INVALID INPUT ");
         }
-        LedgerApp.homescreen();
+        return;
     }
 }
 
