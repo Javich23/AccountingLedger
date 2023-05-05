@@ -30,11 +30,13 @@ public class LedgerApp {
             switch (input.toUpperCase()) {
                 case "D" -> addDeposit();
                 case "P" -> addPayment();
-                case "L" -> showLedger();
+                case "L" -> {
+                    showLedger();
+                    done = true;
+                }
                 case "X" -> {
                     System.out.println("\nEXITING APPLICATION...");
                     System.exit(0);
-                    done = true;
                 }
                 default -> System.out.println("INVALID INPUT... TRY AGAIN ");
             }
@@ -82,31 +84,32 @@ public class LedgerApp {
             String description = consoleInput.nextLine();
             System.out.print("ENTER DEPOSIT AMOUNT: ");
             double amount = consoleInput.nextDouble();
+            consoleInput.nextLine();
             fileWriter.write(String.format("%s|%s|%s|%s|%.2f\n", LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), description, vendor, amount));
             fileWriter.close();
             System.out.println("\nDEPOSIT ADDED ");
         } catch (IOException e) {
             System.out.println("\nINVALID INPUT");
         }
-        return;
+        homescreen();
     }
     //method write input payment into transactions csv file
     public static void addPayment() {
-        System.out.print("ENTER VENDOR NAME: ");
-        String vendor = consoleInput.nextLine();
-        System.out.print("ENTER DESCRIPTION: ");
-        String description = consoleInput.nextLine();
-        System.out.print("ENTER PAYMENT AMOUNT: ");
-        double amount = consoleInput.nextDouble();
-
         try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
+            System.out.print("ENTER VENDOR NAME: ");
+            String vendor = consoleInput.nextLine();
+            System.out.print("ENTER DESCRIPTION: ");
+            String description = consoleInput.nextLine();
+            System.out.print("ENTER PAYMENT AMOUNT: ");
+            double amount = consoleInput.nextDouble();
+            consoleInput.nextLine();
             fileWriter.write(String.format("%s|%s|%s|%s|-%.2f\n", LocalDate.now(), LocalTime.now().truncatedTo(ChronoUnit.SECONDS), description, vendor, amount));
             fileWriter.close();
-            System.out.println("\nPAYMENT ADDED... ");
+            System.out.println("\nPAYMENT ADDED ");
         } catch (IOException e) {
-            System.out.println("INVALID INPUT ");
+            System.out.println("\nINVALID INPUT");
         }
-        return;
+        homescreen();
     }
 }
 
