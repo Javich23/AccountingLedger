@@ -1,12 +1,13 @@
-package com.ledger.info;
+package com.ledger.app;
 import java.time.LocalDate;
 import java.time.LocalTime;
 public class TransactionsInfo {
+    //class with getters, setters, and constructor needed for other classes
     private LocalDate date;
     private LocalTime time;
-    String description;
-    String vendor;
-    double amount;
+    private String description;
+    private String vendor;
+    private double amount;
 
     public TransactionsInfo(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
