@@ -51,7 +51,7 @@ public class Ledger {
         System.out.println("\n--------------------------------------ALL TRANSACTIONS----------------------------------------\n");
         Reports.printHeader();
         for (TransactionsInfo i : transactions) {
-            System.out.printf("%-15s %-15s %-25s %-20s %15s \n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+            System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
         }
     }
     // only prints the deposits inside transactions file
@@ -60,7 +60,7 @@ public class Ledger {
         Reports.printHeader();
         for (TransactionsInfo d : transactions) {
             if (d.getAmount() > 0) {
-                System.out.printf("%-15s %-15s %-25s %-20s %15s \n", d.getDate(), d.getTime(), d.getDescription(), d.getVendor(), d.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", d.getDate(), d.getTime(), d.getDescription(), d.getVendor(), d.getAmount());
             }
         }
     }
@@ -70,7 +70,7 @@ public class Ledger {
         Reports.printHeader();
         for (TransactionsInfo p : transactions) {
             if (p.getAmount() < 0) {
-                System.out.printf("%-15s %-15s %-25s %-20s %15s \n", p.getDate(), p.getTime(), p.getDescription(), p.getVendor(), p.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", p.getDate(), p.getTime(), p.getDescription(), p.getVendor(), p.getAmount());
             }
         }
     }

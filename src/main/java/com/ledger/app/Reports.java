@@ -46,7 +46,7 @@ public class Reports {
         for (TransactionsInfo i : transactions) {
             LocalDate transactionDate = i.getDate();
             if (transactionDate.getMonth() == today.getMonth() && transactionDate.getYear() == today.getYear()) {
-                System.out.printf("%-15s %-15s %-25s %-20s %15s \n", i.getDate(), i.getTime(), i.getVendor(), i.getDescription(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         }
     }
@@ -58,7 +58,7 @@ public class Reports {
         for (TransactionsInfo i : transactions) {
             LocalDate transactionDate = i.getDate();
             if (transactionDate.getYear() == today.getYear()) {
-                System.out.printf("%-15s %-15s %-25s %-20s %15s \n", i.getDate(), i.getTime(), i.getVendor(), i.getDescription(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         }
     }
@@ -71,7 +71,7 @@ public class Reports {
         for (TransactionsInfo i : transactions) {
             LocalDate transactionDate = i.getDate();
             if (transactionDate.getYear() == previousYear) {
-                System.out.printf("%-15s %-15s %-25s %-20s %15s \n", i.getDate(), i.getTime(), i.getVendor(), i.getDescription(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
 
             }
         }
@@ -85,7 +85,7 @@ public class Reports {
         for (TransactionsInfo i : transactions) {
             LocalDate transactionDate = i.getDate();
             if (transactionDate.getMonthValue() == previousMonth) {
-                System.out.printf("%-15s %-15s %-25s %-20s %15s \n", i.getDate(), i.getTime(), i.getVendor(), i.getDescription(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         }
     }
@@ -98,7 +98,7 @@ public class Reports {
 
         for (TransactionsInfo i : transactions) {
             if (i.getVendor().equalsIgnoreCase(vendorName)) {
-                System.out.printf("%-15s %-15s %-25s %-20s %15s \n", i.getDate(), i.getTime(), i.getVendor(), i.getDescription(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-20s %15.2f \n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
 
             }
         }

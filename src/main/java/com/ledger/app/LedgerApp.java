@@ -22,7 +22,7 @@ public class LedgerApp {
                     CHOOSE AN OPTION:
                     [D] - ADD DEPOSIT
                     [P] - MAKE PAYMENT(DEBIT)
-                    [L] - LEDGER
+                    [L] - DISPLAY LEDGER
                     [X] - EXIT APPLICATION
                                        """);
             System.out.print("YOUR CHOICE: ");
