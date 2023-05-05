@@ -16,15 +16,15 @@ Also, user will be able to create reports based on different date ranges.
 
 ## Application Screen Images
 ### Home Screen:
-![img.png](img.png)
+![img.png](resources/img.png)
 ### Ledger Screen:
-![img_1.png](img_1.png)
+![img_1.png](resources/img_1.png)
 ### List of Transactions:
-![img_2.png](img_2.png)
+![img_2.png](resources/img_2.png)
 ### Reports Screen:
-![img_3.png](img_3.png)
+![img_3.png](resources/img_3.png)
 ### Example of Report:
-![img_4.png](img_4.png)
+![img_4.png](resources/img_4.png)
 
 ### Interesting Piece of Code:
-![img_5.png](img_5.png)
+![img_5.png](resources/img_5.png)
